@@ -2,11 +2,13 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+// 모듈로 css 가져오기 , css가 하나의 객체가 됨.
+import styles from "./navigation.module.css"
 
 export default function Navigation() {
     const path = usePathname();
     return (
-        <nav>
+        <nav className={styles.nav}>
             <ul>
                 <li>
                     <Link href="/">Home</Link> {path === "/" ? "🔥" : ""}
