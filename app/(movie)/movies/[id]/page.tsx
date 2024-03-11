@@ -1,7 +1,8 @@
 import { Suspense } from "react";
 import { API_URL } from "../../../(home)/page"
-import MovieInfo from "../../../../components/movie-info";
+import MovieInfo, { getMovies } from "../../../../components/movie-info";
 import MovieVideos from "../../../../components/movie-videos";
+
 
 // async function getMovies(id: string) {
 //     console.log(`Fetching movies: ${Date.now()}`)
@@ -17,12 +18,21 @@ import MovieVideos from "../../../../components/movie-videos";
 //     return response.json();
 // }
 
+interface Iparams {
+    params: { id: string };
+}
+
+export async function generateMatadata({ params: { id } }: Iparams) {
+    const movies = await getMovies(id)
+    return {
+        title: movies.title,
+    }
+}
+
 // []: dynamic route
-export default async function MovieDetail({
+export default async function MovieDetailPage({
     params: { id } }:
-    {
-        params: { id: string };
-    }) {
+    Iparams) {
     // 둘다 끝나야 한꺼번에 보이는 문제
     // const [movie, video] = await Promise.all([getMovies(id), getVideos(id)])
     return (
