@@ -2,8 +2,7 @@ import Link from "next/link";
 import { resolve } from "path";
 import Movie from "../../components/movie";
 import styles from "../styles/home.module.css"
-
-export const API_URL = "https://nomad-movies.nomadcoders.workers.dev/movies";
+import { API_URL } from "./constants";
 
 // severside fetch
 export const metadata = {

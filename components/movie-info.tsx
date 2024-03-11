@@ -1,7 +1,8 @@
-import { API_URL } from '../app/(home)/page';
+
+import { API_URL } from "../app/(home)/constants";
 import styles from "../app/styles/movie-info.module.css";
 
-export async function getMovies(id: string) {
+export async function getMovie(id: string) {
     console.log(`Fetching movies: ${Date.now()}`)
     // await new Promise((resolve) => setTimeout(resolve, 5000));
     const response = await fetch(`${API_URL}/${id}`)
@@ -9,7 +10,7 @@ export async function getMovies(id: string) {
 }
 
 export default async function MovieInfo({ id }) {
-    const movie = await getMovies(id);
+    const movie = await getMovie(id);
     return (
         <div className={styles.container}>
             <img src={movie.poster_path} className={styles.poster} alt={movie.title} />
